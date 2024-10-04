@@ -3,21 +3,19 @@ import FlowerComponent from './components/FlowerComponent';
 import { initializePopulation, evolvePopulation } from './utils/population';
 
 function App() {
-  const [population, setPopulation] = useState(initializePopulation()); // Initialize population
-  const [fitness, setFitness] = useState(new Array(8).fill(0)); // Fitness for each flower
+  const [population, setPopulation] = useState(initializePopulation()); 
+  const [fitness, setFitness] = useState(new Array(8).fill(0)); 
   const [generation, setGeneration] = useState(0);
-  // Handle hover end for a specific flower to update its fitness
   const handleHoverEnd = (index, hoverTime) => {
     const newFitness = [...fitness];
-    newFitness[index] += 1; // Increase fitness by hover time
+    newFitness[index] += 1; 
     setFitness(newFitness);
   };
 
-  // Trigger evolution for the next generation
   const handleNextGeneration = () => {
-    const newPopulation = evolvePopulation(population, fitness); // Evolve the population based on fitness
-    setPopulation(newPopulation); // Update population
-    setFitness(new Array(8).fill(0));// Reset fitness for the new generation
+    const newPopulation = evolvePopulation(population, fitness); 
+    setPopulation(newPopulation); 
+    setFitness(new Array(8).fill(0));
     setGeneration(prevGeneration => prevGeneration + 1);
   };
 
@@ -30,7 +28,7 @@ function App() {
             key={index}
             flower={flower}
             fitness={fitness[index]}
-            onHoverEnd={(hoverTime) => handleHoverEnd(index, hoverTime)} // Track hover time for fitness
+            onHoverEnd={(hoverTime) => handleHoverEnd(index, hoverTime)} 
           />
         ))}
       </div>
