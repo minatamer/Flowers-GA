@@ -151,7 +151,12 @@ function App() {
   
     for (let i = 0; i < crossoverParents / 2; i++) {
       const parentIndexA = Math.floor(Math.random() * selectedIndividuals.length);
-      const parentIndexB = Math.floor(Math.random() * selectedIndividuals.length);
+      // const parentIndexB = Math.floor(Math.random() * selectedIndividuals.length);
+      var parentIndexB;
+
+      do {
+        parentIndexB = Math.floor(Math.random() * population.length);
+      } while (parentIndexA === parentIndexB); 
   
       const parentA = selectedIndividuals[parentIndexA];
       const parentB = selectedIndividuals[parentIndexB];
